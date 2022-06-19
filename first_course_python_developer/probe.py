@@ -1050,3 +1050,10 @@
 #
 #
 # print(compress([5, 5, 5, 4, 5, 6, 6, 5, 5, 7, 8, 0, 0]))
+
+
+# lst_1 = [2**x for x in range(1, 10)]
+#
+# dct_1 = {lst_1.index(a) + 1: a for a in lst_1}
+#
+# print(dct_1[5])
