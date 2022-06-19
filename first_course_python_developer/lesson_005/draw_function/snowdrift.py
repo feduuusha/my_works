@@ -1,0 +1,17 @@
+def snowdrift(point_x, point_y):
+    import turtle
+    pen = turtle.Turtle()
+    turtle.bgcolor('blue')
+    pen.fillcolor('white')
+    pen.begin_fill()
+    pen.up()
+    pen.setpos(point_x - 100, point_y - 100)
+    pen.color('white')
+    pen.down()
+    pen.left(90)
+    pen.forward(200)
+    pen.right(135)
+    pen.forward(80000 ** .5)
+    pen.right(135)
+    pen.forward(200)
+    pen.end_fill()
