@@ -1057,3 +1057,39 @@
 # dct_1 = {lst_1.index(a) + 1: a for a in lst_1}
 #
 # print(dct_1[5])
+
+
+# class Backpack:
+#     def __init__(self):
+#         self.content = []
+#
+#     def add(self, item):
+#         self.content.append(item)
+#
+#     def __len__(self):
+#         return len(self.content) - 1
+#
+#     def __str__(self):
+#         return 'Backpack: ' + ', '.join(self.content)
+#
+#     def __bool__(self):
+#         return self.content != []
+#
+#
+# my_backpack = Backpack()
+# my_backpack.add('Кола')
+# my_backpack.add('Пепси')
+# my_backpack.add('Виски')
+# print(len(my_backpack))
+# print(bool(my_backpack))
+
+
+# def flat_list(a):
+#     q, o = [a], []
+#     while q:
+#         e = q.pop(-1)
+#         q.extend(e) if type(e) == list else o.append(e)
+#     return o[::-1]
+#
+#
+# print(flat_list([1, 2, 3, [[5]],[6]]))
