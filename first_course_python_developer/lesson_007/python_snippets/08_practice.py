@@ -79,19 +79,22 @@ class House:
         return colored(f'В доме осталось {self.food} еды и {self.money} денег', color='green')
 
 
+citizens = [
+    Man(name='Бивис'),
+    Man(name='Батхед'),
+    Man(name='Кенни')
+    ]
 my_sweet_home = House()
-beavis = Man('Бивис')
-butthead = Man('Батхед')
-
-beavis.go_into_the_house(my_sweet_home)
-butthead.go_into_the_house(my_sweet_home)
-for day in range(1, 21):
+for citizen in citizens:
+    citizen.go_into_the_house(my_sweet_home)
+for day in range(1, 366):
     cprint(f'============= День {day} =============', color='yellow')
-    beavis.act()
-    butthead.act()
+    for citizen in citizens:
+        citizen.act()
     print('------------- В конце дня -------------')
-    print(beavis)
-    print(butthead)
+    for citizen in citizens:
+        print(citizen)
+
     print(my_sweet_home)
 # Создадим двух людей, живущих в одном доме - Бивиса и Батхеда
 # Нужен класс Дом, в нем должн быть холодильник с едой и тумбочка с деньгами
