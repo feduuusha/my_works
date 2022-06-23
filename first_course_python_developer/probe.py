@@ -1074,3 +1074,41 @@
 # datetime(2015, 1, 12, 11, 0, 0),
 # datetime(2015, 1, 12, 11, 10, 10)
 # ]))
+
+
+from datetime import datetime
+from typing import List, Optional
+
+
+def sum_light(els: List[datetime], start_watching: Optional[datetime] = None,
+              end_watching: Optional[datetime] = None) -> int:
+    lst_1 = els[::]
+    if start_watching:
+        for i in els:
+            if (start_watching - i).total_seconds() >= 0:
+                lst_1.remove(i)
+            else:
+                lst_1.insert(0, start_watching)
+    if end_watching:
+        for i in els[::-1]:
+            if (i - end_watching).total_seconds() > 0:
+                lst_1.remove(i)
+            else:
+                lst_1.insert(len(lst_1), end_watching)
+                break
+    if len(lst_1) >= 1 and len(els) % 2 == 0:
+        return sum((d2 - d1).total_seconds() for d1, d2 in zip(*[iter(lst_1)]*2))
+    else:
+        lst_1.clear()
+        lst_1.append(start_watching)
+        lst_1.append(end_watching)
+        return sum((d2 - d1).total_seconds() for d1, d2 in zip(*[iter(lst_1)] * 2))
+
+
+print(sum_light([
+        datetime(2015, 1, 12, 10, 0, 0),
+        datetime(2015, 1, 12, 10, 0, 10),
+    ],
+    datetime(2015, 1, 12, 10, 0, 10),
+    datetime(2015, 1, 12, 10, 0, 20)))
+
