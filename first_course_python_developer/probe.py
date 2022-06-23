@@ -903,58 +903,16 @@
 # def sum_light(els: List[datetime]) -> int:
 #     seconds = 0
 #     for i in range(-len(els) + 1, 0, 2):
-#         time = str(els[i] - els[i - 1])
-#         stroke = ''
-#         k = 0
-#         for j, z in enumerate(time[::-1]):
-#             if z.isnumeric() and j == len(time) - 1:
-#                 stroke += z
-#                 if k == 0:
-#                     seconds += int(stroke[::-1])
-#                     k += 1
-#                     stroke = ''
-#                 elif k == 1:
-#                     seconds += int(stroke[::-1]) * 60
-#                     k += 1
-#                     stroke = ''
-#                 elif k == 2:
-#                     seconds += int(stroke[::-1]) * 3600
-#                     k += 1
-#                     stroke = ''
-#                 elif k == 3:
-#                     seconds += int(stroke[::-1]) * 3600 * 24
-#                     k += 1
-#                     stroke = ''
-#             elif z.isnumeric():
-#                 stroke += z
-#             elif z == ':':
-#                 if k == 0:
-#                     seconds += int(stroke[::-1])
-#                     k += 1
-#                     stroke = ''
-#                 elif k == 1:
-#                     seconds += int(stroke[::-1]) * 60
-#                     k += 1
-#                     stroke = ''
-#                 elif k == 2:
-#                     seconds += int(stroke[::-1]) * 3600
-#                     k += 1
-#                     stroke = ''
-#                 elif k == 3:
-#                     seconds += int(stroke[::-1]) * 3600 * 24
-#                     k += 1
-#                     stroke = ''
-#             elif z == 'd':
-#                 k += 1
-#                 stroke = ''
+#         time = els[i] - els[i - 1]
+#         seconds += time.total_seconds()
 #     return seconds
 #
 #
 # print(sum_light([
-#         datetime(2015, 1, 12, 10, 0 , 0),
-#         datetime(2015, 1, 12, 10, 0 , 10),
-#         datetime(2015, 1, 12, 11, 0 , 0),
-#         datetime(2015, 1, 13, 11, 0 , 0),
+#         datetime(2015, 1, 12, 10, 0, 0),
+#         datetime(2015, 1, 12, 10, 0, 10),
+#         datetime(2015, 1, 12, 11, 0, 0),
+#         datetime(2015, 1, 13, 11, 0, 0),
 #     ]))
 
 
@@ -1093,3 +1051,26 @@
 #
 #
 # print(flat_list([1, 2, 3, [[5]],[6]]))
+
+# from datetime import datetime
+# from typing import List, Optional
+#
+#
+# def sum_light(els: List[datetime], start_watching: Optional[datetime] = None) -> int:
+#     lst_1 = els[::]
+#     if start_watching:
+#         for k, i in enumerate(els):
+#             if (start_watching - i).total_seconds() > 0:
+#                 lst_1.remove(i)
+#             else:
+#                 lst_1.insert(0, start_watching)
+#
+#     return sum((d2 - d1).total_seconds() for d1, d2 in zip(*[iter(lst_1)]*2))
+#
+#
+# print(sum_light([
+# datetime(2015, 1, 12, 10, 0, 0),
+# datetime(2015, 1, 12, 10, 10, 10),
+# datetime(2015, 1, 12, 11, 0, 0),
+# datetime(2015, 1, 12, 11, 10, 10)
+# ]))
