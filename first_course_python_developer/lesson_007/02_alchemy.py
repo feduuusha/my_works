@@ -19,8 +19,6 @@
 #   print(Water(), '+', Air(), '=', Water() + Air())
 #   print(Fire(), '+', Air(), '=', Fire() + Air())
 
-# TODO здесь ваш код
-
 class Water:
     def __init__(self):
         self.name = 'Вода'
