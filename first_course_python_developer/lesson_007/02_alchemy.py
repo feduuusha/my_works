@@ -35,6 +35,10 @@ class Water:
             return Steam()
         elif other.name == 'Земля':
             return Dirt()
+        elif other.name == 'Пар':
+            return Ethanol()
+        elif other.name == 'Спирт':
+            return Vodka()
         else:
             return None
 
@@ -51,6 +55,10 @@ class Air:
             return Lightning()
         elif other.name == 'Земля':
             return Dust()
+        elif other.name == 'Вода':
+            return Storm()
+        elif other.name == 'Спирт':
+            return Water()
         else:
             return None
 
@@ -65,6 +73,12 @@ class Fire:
     def __add__(self, other):
         if other.name == 'Земля':
             return Lava()
+        elif other.name == 'Вода':
+            return Steam()
+        elif other.name == 'Воздух':
+            return Lightning()
+        elif other.name == 'Спирт':
+            return Boom()
         else:
             return None
 
@@ -77,7 +91,14 @@ class Earth:
         return 'Земля'
 
     def __add__(self, other):
-        return None
+        if other.name == 'Вода':
+            return Dirt()
+        elif other.name == 'Воздух':
+            return Dust()
+        elif other.name == 'Огонь':
+            return Lava()
+        else:
+            return None
 
 
 class Storm:
@@ -146,6 +167,46 @@ class Lava:
         return None
 
 
+class Ethanol:
+    def __init__(self):
+        self.name = 'Спирт'
+
+    def __str__(self):
+        return 'Спирт'
+
+    def __add__(self, other):
+        if other.name == 'Огонь':
+            return Boom()
+        elif other.name == 'Вода':
+            return Vodka()
+        elif other.name == 'Воздух':
+            return Water()
+        else:
+            return None
+
+
+class Boom:
+    def __init__(self):
+        self.name = 'Взрыв'
+
+    def __str__(self):
+        return 'Взрыв'
+
+    def __add__(self, other):
+        return None
+
+
+class Vodka:
+    def __init__(self):
+        self.name = 'Водка'
+
+    def __str__(self):
+        return 'Водка'
+
+    def __add__(self, other):
+        return None
+
+
 print(Water(), '+', Air(), '=', Water() + Air())
 print(Fire(), '+', Air(), '=', Fire() + Air())
 print(Storm(), '+', Air(), '=', Storm() + Air())
@@ -157,4 +218,13 @@ print(Fire() + Earth())
 
 # Усложненное задание (делать по желанию)
 # Добавить еще элемент в игру.
+# Добавим в игру элемент Спирт
+# Спирт будет получаться за счет смешения Воды и Пара
+# Спирт + Вода = Водка
+print(Ethanol() + Water())
+# Спирт + Огонь = Взрыв
+print(Ethanol() + Fire())
+# Спирт + Воздух = Вода
+print(Ethanol() + Air())
 # Придумать что будет при сложении существующих элементов с новым.
+print(Water() + (Water() + Fire()))
