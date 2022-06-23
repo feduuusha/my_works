@@ -22,7 +22,6 @@
 
 # Человеку и коту надо вместе прожить 365 дней.
 
-# TODO здесь ваш код
 from termcolor import cprint, colored
 from random import randint
 
