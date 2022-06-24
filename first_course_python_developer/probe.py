@@ -1140,3 +1140,16 @@
 #                 if k * int(lst_1[i+1]) > my_max:
 #                     my_max = k * int(lst_1[i + 1])
 # print(counter, my_max)
+
+
+# class NewList(list):
+# #     def __getitem__(self, item):
+# #         if item > 0:
+# #             return super().__getitem__(item-1)
+# #         elif item < 0:
+# #             return super().__getitem__(item)
+# #
+# #
+# # b = NewList([2**a for a in range(1, 11)])
+# # print(b)
+# # print(b[0])
