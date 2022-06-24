@@ -1076,39 +1076,67 @@
 # ]))
 
 
-from datetime import datetime
-from typing import List, Optional
+# lst_1 = []
+# with open('F:\Downloads\9274620b-ec37-47b4-8856-22290819ea0d.txt', 'r') as F:
+#     for _ in range(1, 5001):
+#         s = F.readline()
+#         lst_1.append(s[:-1])
+# counter = 0
+# my_max = -20000
+# for i, k in enumerate(lst_1):
+#     k = int(k)
+#     if i == len(lst_1) - 1:
+#         break
+#     if k % 3 == 0 or int(lst_1[i+1]) % 3 == 0:
+#         counter += 1
+#         if my_max < k + int(lst_1[i + 1]):
+#             my_max = k + int(lst_1[i + 1])
+# print(counter, my_max)
 
 
-def sum_light(els: List[datetime], start_watching: Optional[datetime] = None,
-              end_watching: Optional[datetime] = None) -> int:
-    lst_1 = els[::]
-    if start_watching:
-        for i in els:
-            if (start_watching - i).total_seconds() >= 0:
-                lst_1.remove(i)
-            else:
-                lst_1.insert(0, start_watching)
-    if end_watching:
-        for i in els[::-1]:
-            if (i - end_watching).total_seconds() > 0:
-                lst_1.remove(i)
-            else:
-                lst_1.insert(len(lst_1), end_watching)
-                break
-    if len(lst_1) >= 1 and len(els) % 2 == 0:
-        return sum((d2 - d1).total_seconds() for d1, d2 in zip(*[iter(lst_1)]*2))
-    else:
-        lst_1.clear()
-        lst_1.append(start_watching)
-        lst_1.append(end_watching)
-        return sum((d2 - d1).total_seconds() for d1, d2 in zip(*[iter(lst_1)] * 2))
+# lst_1 = []
+# with open('F:\Downloads\9fe53da1-84fc-4e97-aa87-f65fa6e5a7b8.txt', 'r') as F:
+#     for _ in range(1, 10001):
+#         if _ == 10000:
+#             s = F.readline()
+#             lst_1.append(s)
+#         else:
+#             s = F.readline()
+#             lst_1.append(s[:-1])
+#
+# counter = 0
+# my_max = -2000
+# for i, k in enumerate(lst_1):
+#     k = int(k)
+#     if i == len(lst_1) - 1:
+#         break
+#     if (k * int(lst_1[i+1])) % 62 == 0:
+#         counter += 1
+#         if my_max < k + int(lst_1[i+1]):
+#             my_max = k + int(lst_1[i+1])
+# print(counter, my_max)
 
 
-print(sum_light([
-        datetime(2015, 1, 12, 10, 0, 0),
-        datetime(2015, 1, 12, 10, 0, 10),
-    ],
-    datetime(2015, 1, 12, 10, 0, 10),
-    datetime(2015, 1, 12, 10, 0, 20)))
-
+# lst_1 = []
+# with open('F:\Downloads\9klok.txt', 'r') as F:
+#     for i in range(1, 11001):
+#         if i == 11000:
+#             s = F.readline()
+#             lst_1.append(s)
+#         else:
+#             s = F.readline()
+#             lst_1.append(s[:-1])
+# counter = 0
+# my_max = - 20000
+# print(lst_1)
+# for i, k in enumerate(lst_1):
+#     k = int(k)
+#     if i == len(lst_1) - 1:
+#         break
+#     if (k + int(lst_1[i+1])) % 3 == 0:
+#         if k % 17 == 0:
+#             if int(lst_1[i+1]) % 17 == 0:
+#                 counter += 1
+#                 if k * int(lst_1[i+1]) > my_max:
+#                     my_max = k * int(lst_1[i + 1])
+# print(counter, my_max)
