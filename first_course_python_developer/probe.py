@@ -1143,13 +1143,50 @@
 
 
 # class NewList(list):
-# #     def __getitem__(self, item):
-# #         if item > 0:
-# #             return super().__getitem__(item-1)
-# #         elif item < 0:
-# #             return super().__getitem__(item)
-# #
-# #
-# # b = NewList([2**a for a in range(1, 11)])
-# # print(b)
-# # print(b[0])
+#     def __getitem__(self, item):
+#         if item > 0:
+#             return super().__getitem__(item-1)
+#         elif item < 0:
+#             return super().__getitem__(item)
+#
+#
+# b = NewList([2**a for a in range(1, 11)])
+# print(b)
+# print(b[0])
+
+
+# сердечко из квадратиков
+import turtle
+#
+pen = turtle.Turtle()
+# pen.speed(0)
+# pen.color("red")
+# a = 20
+#
+#
+# def sqard():
+#     for i in range(4):
+#         pen.forward(a)
+#         pen.left(90)
+#
+#
+# def love():
+#     for i in range(75):
+#         sqard()
+#         pen.left(2)
+#         global a
+#         a = a + 2.5
+#
+#     for i in range(75):
+#         sqard()
+#         pen.left(2)
+#         a = a - 2.5
+#
+#
+# pen.penup()
+# pen.left(75)
+# pen.sety(150)
+# pen.pendown()
+# love()
+#
+# turtle.done()
