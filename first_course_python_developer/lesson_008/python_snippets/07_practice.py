@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from random import randint
 from termcolor import cprint
 
 # Реализуем модель доставки грузов
@@ -52,6 +51,7 @@ class Warehouse:
 
     def truck_arrived(self, truck):
         self.queue_in.append(truck)
+        truck.place = self
         print(f'{self.name} прибыл грузовик {truck}')
 
     def get_next_truck(self):
@@ -85,6 +85,7 @@ class Vehicle:
 
 
 class Truck(Vehicle):
+    fuel_rate = 50
 
     def __init__(self, model, body_space=1000):
         super().__init__(model=model)
@@ -104,12 +105,12 @@ class Truck(Vehicle):
         print(f'{self.model} выехал в путь')
 
     def ride(self):
+        self.fuel -= self.fuel_rate
         if self.distance_to_target > self.velocity:
             self.distance_to_target -= self.velocity
-            print(f'{self.model} едет по дороге осталось {self.distance_to_target}')
+            print(f'{self.model} едет по дороге, осталось {self.distance_to_target}')
         else:
-            self.place = self.place.end
-            self.place.truck_arrived(self)
+            self.place.end.truck_arrived(self)
             print(f'{self.model} доехал ')
 
     def act(self):
@@ -120,6 +121,7 @@ class Truck(Vehicle):
 
 
 class AutoLoader(Vehicle):
+    fuel_rate = 30
 
     def __init__(self, model, bucket_capacity=100, warehouse=None, role='loader'):
         super().__init__(model=model)
@@ -137,12 +139,14 @@ class AutoLoader(Vehicle):
             self.tank_up()
         elif self.track is None:
             self.track = self.warehouse.get_next_truck()
+            print(f'{self.model} взял в работу {self.track}')
         elif self.role == 'loader':
             self.load()
         else:
             self.unload()
 
     def load(self):
+        self.fuel -= self.fuel_rate
         track_cargo_rest = self.track.body_space - self.track.cargo
         if track_cargo_rest >= self.bucket_capacity:
             self.warehouse.content -= self.bucket_capacity
@@ -150,18 +154,60 @@ class AutoLoader(Vehicle):
         else:
             self.warehouse.content -= track_cargo_rest
             self.track.cargo += track_cargo_rest
-        if self.track.cargo == 0:
+        print(f'{self.model} загружал {self.track}')
+        if self.track.cargo == self.track.body_space:
             self.warehouse.truck_ready(self.track)
             self.track = None
 
     def unload(self):
+        self.fuel -= self.fuel_rate
         if self.track.cargo >= self.bucket_capacity:
             self.track.cargo -= self.bucket_capacity
-            self.warehouse += self.bucket_capacity
+            self.warehouse.content += self.bucket_capacity
         else:
             self.track.cargo -= self.track.cargo
-            self.warehouse.content += self.bucket_capacity
+            self.warehouse.content += self.track.cargo
+        print(f'{self.model} разгружал {self.track.model}')
+        if self.track.cargo == 0:
+            self.warehouse.truck_ready(self.track)
+            self.track = None
 
+
+TOTAL_CARGO = 100000
+
+moscow = Warehouse(name='Москва', content=TOTAL_CARGO)
+piter = Warehouse(name='Питер', content=0)
+
+moscow_piter = Road(start=moscow, end=piter, distance=715)
+piter_moscow = Road(start=piter, end=moscow, distance=780)
+
+moscow.set_road_out(moscow_piter)
+piter.set_road_out(piter_moscow)
+
+loader_1 = AutoLoader(model='Bobcat', bucket_capacity=1000, warehouse=moscow, role='loader')
+loader_2 = AutoLoader(model='Lonking', bucket_capacity=500, warehouse=piter, role='unloader')
+
+truck_1 = Truck(model='КАМАЗ', body_space=5000)
+truck_2 = Truck(model='ГАЗ', body_space=2000)
+
+moscow.truck_arrived(truck_1)
+moscow.truck_arrived(truck_2)
+hour = 0
+while piter.content < TOTAL_CARGO:
+    hour += 1
+    cprint(f'========== Час {hour} ==========', color='red')
+    truck_1.act()
+    truck_2.act()
+    loader_1.act()
+    loader_2.act()
+    moscow.act()
+    piter.act()
+    cprint(str(truck_1), color='cyan')
+    cprint(str(truck_2), color='cyan')
+    cprint(str(loader_1), color='cyan')
+    cprint(str(loader_2), color='cyan')
+    cprint(str(moscow), color='cyan')
+    cprint(str(piter), color='cyan')
 
 # class Road:
 #
@@ -336,35 +382,6 @@ class AutoLoader(Vehicle):
 #             self.truck = None
 #
 #
-TOTAL_CARGO = 100000
-
-moscow = Warehouse(name='Москва', content=TOTAL_CARGO)
-piter = Warehouse(name='Питер', content=0)
-
-moscow_piter = Road(start=moscow, end=piter, distance=715)
-piter_moscow = Road(start=piter, end=moscow, distance=780)
-
-moscow.set_road_out(moscow_piter)
-piter.set_road_out(piter_moscow)
-
-loader_1 = AutoLoader(model='Bobcat', bucket_capacity=1000, warehouse=moscow, role='loader')
-loader_2 = AutoLoader(model='Lonking', bucket_capacity=500, warehouse=piter, role='unloader')
-
-truck_1 = Truck(model='Камаз', body_space=5000)
-truck_2 = Truck(model='Газ', body_space=2000)
-
-moscow.truck_arrived(truck_1)
-moscow.truck_arrived(truck_2)
-hour = 0
-for _ in range(1, 100):
-    hour += 1
-    cprint(f'========== {hour} час ==========', color='red')
-    truck_1.act()
-    truck_2.act()
-    loader_1.act()
-    loader_2.act()
-    moscow.act()
-    piter.act()
 #
 # trucks = []
 # for number in range(5):
