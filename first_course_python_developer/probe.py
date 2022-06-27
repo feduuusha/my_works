@@ -1156,9 +1156,9 @@
 
 
 # сердечко из квадратиков
-import turtle
+# import turtle
 #
-pen = turtle.Turtle()
+# pen = turtle.Turtle()
 # pen.speed(0)
 # pen.color("red")
 # a = 20
@@ -1190,3 +1190,50 @@ pen = turtle.Turtle()
 # love()
 #
 # turtle.done()
+
+
+# l1st = []
+# with open('F:\Downloads\9999.txt', 'r') as F:
+#     for _ in range(8000):
+#         s = F.readline()
+#         if s[:-1] not in l1st:
+#             l1st.append(s[:-1])
+# count = 0
+# my_max = -99999
+# for k, i in enumerate(l1st):
+#     for j, z in enumerate(l1st[k+1:]):
+#         i = int(i)
+#         z = int(z)
+#         if (i * z) % 2 == 1:
+#             if (i % z == 0) or (z % i == 0):
+#                 count += 1
+#                 if z > i:
+#                     if my_max < z:
+#                         my_max = z
+#                 else:
+#                     if my_max < i:
+#                         my_max = i
+# print(count, my_max,)
+
+
+# lst1 = []
+# with open('F:\Downloads\978.txt') as F:
+#     for _ in range(7000):
+#         s = F.readline()
+#         lst1.append(s[:-1])
+#
+# count = 0
+# my_max = -9999
+# for i, k in enumerate(lst1):
+#     if i == len(lst1) - 1:
+#         break
+#     k = int(k)
+#     z = int(lst1[i+1])
+#     if (k % 123) != (z % 123):
+#         if (k + z) % 123 == 0:
+#             count += 1
+#             if (k + z) > my_max:
+#                 my_max = k + z
+#
+#
+# print(count, my_max)
