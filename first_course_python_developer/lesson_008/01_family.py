@@ -248,6 +248,22 @@ cprint(f'Всего шуб куплено {Wife.all_coat}', color='cyan')
 # Если кот дерет обои, то грязи становится больше на 5 пунктов
 
 
+class Cat:
+
+    def __init__(self):
+        pass
+
+    def act(self):
+        pass
+
+    def eat(self):
+        pass
+
+    def sleep(self):
+        pass
+
+    def soil(self):
+        pass
 
 
 ######################################################## Часть вторая бис
@@ -306,6 +322,7 @@ for day in range(365):
     cprint(kolya, color='cyan')
     cprint(murzik, color='cyan')
 
+
 # Усложненное задание (делать по желанию)
 #
 # Сделать из семьи любителей котов - пусть котов будет 3, или даже 5-10.
@@ -327,3 +344,4 @@ for day in range(365):
 #       for salary in range(50, 401, 50):
 #           max_cats = life.experiment(salary)
 #           print(f'При зарплате {salary} максимально можно прокормить {max_cats} котов')
+
