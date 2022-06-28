@@ -1308,11 +1308,30 @@
 #     x //= 2
 # print(count1)
 
-for a in range(1, 1000):
-    b = 1
-    for x in range(1, 1000):
-        b *= (x & 29 == 0) or ((x & 17 != 0) or (x & a != 0))
-        if not b:
-            break
-    if b:
-        print(a)
+# for a in range(1, 1000):
+#     b = 1
+#     for x in range(1, 1000):
+#         b *= (x & 29 == 0) or ((x & 17 != 0) or (x & a != 0))
+#         if not b:
+#             break
+#     if b:
+#         print(a)
+
+
+# lst = []
+# with open('F:\Downloads\98876.txt', 'r') as F:
+#     for _ in range(5000):
+#         s = F.readline()
+#         lst.append(s[:-1])
+# counter = 0
+# my_min = 9999
+# for i, k in enumerate(lst):
+#     for j, z in enumerate(lst[i+1:]):
+#         k = int(k)
+#         z = int(z)
+#         if k % 5 == 0 or z % 5 == 0:
+#             if (k * z) % (k + z) == 0:
+#                 counter += 1
+#                 if k + z < my_min:
+#                     my_min = k + z
+# print(counter, my_min)
