@@ -203,25 +203,6 @@ class Wife(Human):
             print(f'{self.name} убрала дом')
 
 
-home = House()
-serge = Husband(name='Сережа')
-masha = Wife(name='Маша')
-
-serge.go_to_house(home)
-masha.go_to_house(home)
-
-for day in range(1, 366):
-    cprint(f'================== День {day} ==================', color='green')
-    serge.act()
-    masha.act()
-    cprint(str(serge), color='cyan')
-    cprint(str(masha), color='cyan')
-    cprint(str(home), color='cyan')
-
-cprint(f'Всего денег заработано {House.all_money}', color='cyan')
-cprint(f'Всего еды съедено {Human.all_eat}', color='cyan')
-cprint(f'Всего шуб куплено {Wife.all_coat}', color='cyan')
-
 
 # Часть вторая
 #
@@ -266,7 +247,7 @@ class Cat:
         pass
 
 
-######################################################## Часть вторая бис
+# Часть вторая бис
 #
 # После реализации первой части надо в ветке мастер продолжить работу над семьей - добавить ребенка
 #
@@ -275,30 +256,56 @@ class Cat:
 #   спать,
 #
 # отличия от взрослых - кушает максимум 10 единиц еды,
-# степень счастья  - не меняется, всегда ==100 ;)
+# степень счастья - не меняется, всегда ==100 ;)
 
-class Child:
+class Child(Human):
 
-    def __init__(self):
-        pass
+    def __init__(self, name):
+        super().__init__(name=name)
 
     def __str__(self):
         return super().__str__()
 
     def act(self):
-        pass
+        if self.fullness <= 20:
+            self.eat()
+        else:
+            self.sleep()
 
     def eat(self):
-        pass
+        self.fullness += 10
+        self.house.eat -= 10
+        print(f'{self.name} поел')
 
     def sleep(self):
-        pass
+        self.fullness -= 10
+        print(f'{self.name} весь день проспал')
 
 
-# TODO после реализации второй части - отдать на проверку учителем две ветки
+home = House()
+serge = Husband(name='Сережа')
+masha = Wife(name='Маша')
+vasya = Child(name='Вася')
 
+serge.go_to_house(home)
+masha.go_to_house(home)
+vasya.go_to_house(home)
 
-######################################################## Часть третья
+for day in range(1, 366):
+    cprint(f'================== День {day} ==================', color='green')
+    serge.act()
+    masha.act()
+    vasya.act()
+    cprint(str(serge), color='cyan')
+    cprint(str(masha), color='cyan')
+    cprint(str(vasya), color='cyan')
+    cprint(str(home), color='cyan')
+
+cprint(f'Всего денег заработано {House.all_money}', color='cyan')
+cprint(f'Всего еды съедено {Human.all_eat}', color='cyan')
+cprint(f'Всего шуб куплено {Wife.all_coat}', color='cyan')
+
+# Часть третья
 #
 # после подтверждения учителем второй части (обоих веток)
 # влить в мастер все коммиты из ветки develop и разрешить все конфликты
