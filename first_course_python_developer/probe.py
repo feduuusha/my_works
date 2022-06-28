@@ -1237,3 +1237,82 @@
 #
 #
 # print(count, my_max)
+
+
+# for a in range(0, 1000):
+#     b = 1
+#     for x in range(1, 1000):
+#         for y in range(1, 1000):
+#             b *= (not(x <= 9) or (x * x <= a)) and (not(y * y <= a) or (y <= 9))
+#             if not b:
+#                 break
+#     if b:
+#         print(a)
+
+
+# for a in range(1000):
+#     b = 1
+#     for x in range(1000):
+#         for y in range(1000):
+#             b *= (not(x < 6) or (x * x < a)) and (not(y * y <= a) or (y <= 6))
+#             if not b:
+#                 break
+#     if b:
+#         print(a)
+
+
+# for a in range(1000):
+#     b = 1
+#     for x in range(1000):
+#         for y in range(1000):
+#             b *= (not(x < a) or (x * x < 81)) and (not(y * y <= 36) or (y <= a))
+#             if not b:
+#                 break
+#     if b:
+#         print(a)
+
+
+# for a in range(1000):
+#     b = 1
+#     for x in range(1000):
+#         b *= ((x & 29) == 0) or ((x & 12) != 0) or ((x & a) != 0)
+#         if not b:
+#             break
+#     print(a) if b else None
+
+
+# for a in range(1, 1000):
+#     b = 1
+#     for x in range(1, 1000):
+#         b *= (x % a == 0) or (not(x % 10 == 0) or not(x % 18 == 0))
+#         if not b:
+#             break
+#     if b and a < 50:
+#         print(a)
+
+
+# x = 9**8 + 3**5 - 9   #формула
+# count2 = 0 #счетчик нужного нам числа
+# while x: #пока x!=0
+#     if x % 3 == 2: #делим x на основание в которой нужен ответ
+#         count2 += 1 # прибавляем счётчик
+#     x //= 3 # и делим нацело на основание
+# print(count2)
+
+
+# x = 4**2016 + 2**2018 - 8**600 + 6
+# count1 = 0
+# while x:
+#     if x % 2 == 1:
+#         count1 += 1
+#     x //= 2
+# print(count1)
+
+for a in range(1, 1000):
+    b = 1
+    for x in range(1, 1000):
+        b *= (x & 29 == 0) or ((x & 17 != 0) or (x & a != 0))
+        if not b:
+            break
+    if b:
+        print(a)
