@@ -333,6 +333,10 @@ serge = Husband(name='Сережа')
 masha = Wife(name='Маша')
 kolya = Child(name='Коля')
 murzik = Cat(name='Мурзик')
+serge.go_to_house(home)
+masha.go_to_house(home)
+kolya.go_to_house(home)
+murzik.go_to_house(home)
 
 for day in range(1, 366):
     cprint('================== День {} =================='.format(day), color='red')
@@ -344,6 +348,11 @@ for day in range(1, 366):
     cprint(str(masha), color='cyan')
     cprint(str(kolya), color='cyan')
     cprint(str(murzik), color='cyan')
+    cprint(str(home), color='cyan')
+
+cprint(f'Всего потрачено денег - {House.all_money}')
+cprint(f'Всего съедено еды - {Human.all_eat}')
+cprint(f'Всего куплено шуб - {Wife.all_coat}')
 
 
 # Усложненное задание (делать по желанию)
@@ -367,4 +376,3 @@ for day in range(1, 366):
 #       for salary in range(50, 401, 50):
 #           max_cats = life.experiment(salary)
 #           print(f'При зарплате {salary} максимально можно прокормить {max_cats} котов')
-
