@@ -75,7 +75,7 @@ class Human:
 
     def petting_the_cat(self):
         self.happiness += 5
-        print(f'{self.name} погладил кота.')
+        print(f'{self.name} погладил кота')
 
 
 class Husband(Human):
@@ -148,6 +148,8 @@ class Wife(Human):
             self.eat()
         elif self.house.eat <= 50:
             self.shopping()
+        elif self.house.cat_eat <= 50:
+            self.cat_shopping()
         elif self.happiness <= 20:
             self.buy_fur_coat()
         elif self.house.dirt >= 80:
@@ -182,6 +184,14 @@ class Wife(Human):
         else:
             cprint(f'Нехватает денег на еду...', color='red')
 
+    def cat_shopping(self):
+        if self.house.money >= 50:
+            self.house.money -= 50
+            self.house.cat_eat += 50
+            print(f'{self.name} купила еды кошке')
+        else:
+            cprint(f'Нехватает денег на еду для кошки...', color='red')
+
     def buy_fur_coat(self):
         if self.house.money >= 350:
             self.house.money -= 350
@@ -201,26 +211,6 @@ class Wife(Human):
             self.house.dirt -= 100
             self.fullness -= 10
             print(f'{self.name} убрала дом')
-
-
-home = House()
-serge = Husband(name='Сережа')
-masha = Wife(name='Маша')
-
-serge.go_to_house(home)
-masha.go_to_house(home)
-
-for day in range(1, 366):
-    cprint(f'================== День {day} ==================', color='green')
-    serge.act()
-    masha.act()
-    cprint(str(serge), color='cyan')
-    cprint(str(masha), color='cyan')
-    cprint(str(home), color='cyan')
-
-cprint(f'Всего денег заработано {House.all_money}', color='cyan')
-cprint(f'Всего еды съедено {Human.all_eat}', color='cyan')
-cprint(f'Всего шуб куплено {Wife.all_coat}', color='cyan')
 
 
 # Часть вторая
@@ -250,23 +240,76 @@ cprint(f'Всего шуб куплено {Wife.all_coat}', color='cyan')
 
 class Cat:
 
-    def __init__(self):
-        pass
+    def __init__(self, name):
+        self.name = name
+        self.fullness = 30
+        self.house = None
+
+    def __str__(self):
+        return f'{self.name} сыта на {self.fullness}'
 
     def act(self):
-        pass
+        dice = randint(1, 2)
+        if self.fullness <= 0:
+            cprint(f'{self.name} умер...', color='red')
+        else:
+            if self.fullness <= 20:
+                self.eat()
+            elif dice == 1:
+                self.soil()
+            elif dice == 2:
+                self.sleep()
+
+    def go_to_house(self, house_name):
+        self.house = house_name
 
     def eat(self):
-        pass
+        if self.house.cat_eat >= 10:
+            self.fullness += 20
+            self.house.cat_eat -= 10
+            print(f'{self.name} поел')
+        else:
+            if self.house.cat_eat:
+                self.fullness += 2 * self.house.cat_eat
+                self.house.cat_eat -= self.house.cat_eat
+                print(f'{self.name} поел')
+            else:
+                cprint('В доме нет еды для кота', color='red')
 
     def sleep(self):
-        pass
+        self.fullness -= 10
+        print(f'{self.name} проспал весь день')
 
     def soil(self):
-        pass
+        self.house.dirt += 5
+        self.fullness -= 10
+        print(f'{self.name} подрал обои')
 
 
-######################################################## Часть вторая бис
+home = House()
+serge = Husband(name='Сережа')
+masha = Wife(name='Маша')
+liza = Cat(name='Лиза')
+
+serge.go_to_house(home)
+masha.go_to_house(home)
+liza.go_to_house(home)
+
+for day in range(1, 366):
+    cprint(f'================== День {day} ==================', color='green')
+    serge.act()
+    masha.act()
+    liza.act()
+    cprint(str(serge), color='cyan')
+    cprint(str(masha), color='cyan')
+    cprint(str(liza), color='cyan')
+    cprint(str(home), color='cyan')
+
+cprint(f'Всего денег заработано {House.all_money}', color='cyan')
+cprint(f'Всего еды съедено {Human.all_eat}', color='cyan')
+cprint(f'Всего шуб куплено {Wife.all_coat}', color='cyan')
+
+# Часть вторая бис
 #
 # После реализации первой части надо в ветке мастер продолжить работу над семьей - добавить ребенка
 #
