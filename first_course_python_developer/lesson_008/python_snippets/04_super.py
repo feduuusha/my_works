@@ -56,5 +56,3 @@ class SubmarineRobot(WarRobot):
 rc_submarine = WarRobot(model='Orbiter', gun='лазер')
 print(rc_submarine)
 rc_submarine.operate()
-
-

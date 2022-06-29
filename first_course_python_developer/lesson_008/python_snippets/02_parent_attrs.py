@@ -34,5 +34,5 @@ class Child(Parent):
 
 
 obj = Child()
-# obj.parent_method()
-obj.method()
+obj.parent_method()
+# obj.method()

@@ -63,4 +63,3 @@ r2d2.operate()
 roomba = VacuumCleaningRobot(model='roomba M505')
 print(roomba)
 roomba.operate()
-
