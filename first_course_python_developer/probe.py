@@ -1335,3 +1335,42 @@
 #                 if k + z < my_min:
 #                     my_min = k + z
 # print(counter, my_min)
+
+
+# lst = []
+# with open('F:\Downloads\9321.txt') as F:
+#     for _ in range(6000):
+#         s = F.readline()
+#         lst.append(s[:-1])
+#
+# counter = 0
+# my_min = 9999
+# for i, k in enumerate(lst):
+#     for z, j in enumerate(lst[i+1:]):
+#         k = int(k)
+#         j = int(j)
+#         if (k+j) % 2 == 1:
+#             if (k * j) % 125 == 0:
+#                 counter += 1
+#                 if my_min > k + j:
+#                     my_min = k + j
+# print(counter, my_min)
+
+
+# lst = []
+# with open('F:\Downloads\9666.txt', 'r') as F:
+#     for _ in range(6000):
+#         s = F.readline()
+#         lst.append(s[:-1])
+#
+# counter = 0
+# my_min = 9999
+# for i, k in enumerate(lst):
+#     k = int(k)
+#     if i == len(lst) - 1:
+#         break
+#     if (k % 5 == 0) or (int(lst[i+1]) % 5 == 0):
+#         counter += 1
+#         if k + int(lst[i+1]) < my_min:
+#             my_min = int(lst[i+1]) + k
+# print(counter, my_min)
