@@ -1374,3 +1374,64 @@
 #         if k + int(lst[i+1]) < my_min:
 #             my_min = int(lst[i+1]) + k
 # print(counter, my_min)
+
+
+# with open("F:\Zona Dowlands\[HTML Academy] Профессиональный онлайн‑курс HTML и CSS,
+# уровень 1 (2020)\Знакомство\Материалы.md", 'r', encoding='utf8') as F:
+#     s = F.read()
+#     print(s)
+
+
+# print('xyzw')
+# for x in range(2):
+#     for y in range(2):
+#         for z in range(2):
+#             for w in range(2):
+#                 F = (not(x == (not y)) or (y and not z)) or (z and not w)
+#                 if not F:
+#                     print(x, y, z, w)
+
+
+# print('x y z w')
+# for x in range(2):
+#     for y in range(2):
+#         for z in range(2):
+#             for w in range(2):
+#                 F = (not x or (y == w)) or ((not z and x) == (z and w))
+#                 if not F:
+#                     print(x, y, z, w)
+
+
+# s = 127 * '9'
+# while '333' in s or '999' in s:
+#     if '333' in s:
+#         s = s.replace('333', '9', 1)
+#     else:
+#         s = s.replace('999', '3', 1)
+# print(s)
+
+
+# s = 54 * '5' + '7'
+# while '722' in s or '557' in s:
+#     if '722' in s:
+#         s = s.replace('722', '57', 1)
+#     else:
+#         s = s.replace('557', '72', 1)
+# print(s)
+
+
+# s = '1' + 100 * '9'
+# while '19' in s or '299' in s or '3999' in s:
+#     s = s.replace('19', '2', 1)
+#     s = s.replace('299', '3', 1)
+#     s = s.replace('3999', '1', 1)
+# print(s)
+
+
+# s = 7 * '1' + 7 * '2'
+# while '111' in s or '222' in s:
+#     if '111' in s:
+#         s = s.replace('111', '2', 1)
+#     if '222' in s:
+#         s = s.replace('222', '1', 1)
+# print(s)
