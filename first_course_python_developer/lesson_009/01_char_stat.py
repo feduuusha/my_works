@@ -26,10 +26,12 @@ import zipfile
 
 class LetterStatistics:
 
-    def __init__(self, file_name):
+    def __init__(self, file_name, sort_by_value=None, sort_by_key=None):
         self.file_name = file_name
         self.stat = {}
         self.all_chars = 0
+        self.sort_by_value = sort_by_value
+        self.sort_by_key = sort_by_key
 
     def unzip(self):
         zfile = zipfile.ZipFile(self.file_name, 'r')
@@ -50,8 +52,12 @@ class LetterStatistics:
                             self.stat[char] = 1
 
     def sort_stat(self):
-        sorted_tuple = sorted(self.stat.items(), key=lambda x: x[1], reverse=True)
-        self.stat = dict(sorted_tuple)
+        if self.sort_by_value is not None:
+            sorted_tuple = sorted(self.stat.items(), key=lambda x: x[1], reverse=not self.sort_by_value)
+            self.stat = dict(sorted_tuple)
+        if self.sort_by_key is not None:
+            sorted_keys = sorted(self.stat.items(), key=lambda x: x[0], reverse=not self.sort_by_key)
+            self.stat = dict(sorted_keys)
 
     def formatting(self):
         print('+---------+---------+')
@@ -69,7 +75,7 @@ class LetterStatistics:
 my_file = os.path.normpath("C:\\Users\\vorop\\PycharmProjects\\"
                            "my_works\\first_course_python_developer\\"
                            "lesson_009\\python_snippets\\voyna-i-mir.txt.zip")
-stat = LetterStatistics(file_name=my_file)
+stat = LetterStatistics(file_name=my_file,  sort_by_key=True)
 stat.collect_stat()
 stat.sort_stat()
 stat.formatting()
