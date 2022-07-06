@@ -1435,3 +1435,107 @@
 #     if '222' in s:
 #         s = s.replace('222', '1', 1)
 # print(s)
+
+
+# s = 80 * '1'
+# while '11111' in s:
+#     s = s.replace('111', '2', 1)
+#     s = s.replace('222', '1', 1)
+# print(s)
+
+
+# print('w x y z')
+# for w in range(2):
+#     for x in range(2):
+#         for y in range(2):
+#             for z in range(2):
+#                 F = (x and not y) or (y == z) or not w
+#                 if not F:
+#                     print(w, x, y, z)
+
+
+# s = 100
+# n = 300
+# while s + n <= 500:
+#     s = s + 30
+#     n = n - 20
+# print(s)
+
+
+# x = 25**5 + 5**14 - 5
+# counter = 0
+# while x:
+#     if x % 5 == 4:
+#         counter += 1
+#     x //= 5
+# print(counter)
+
+
+# for a in range(1, 64):
+#     b = 1
+#     for x in range(1, 100):
+#         b *= (x & 51 == 0) or ((x & 41 != 0) or (x & a == 0))
+#         if not b:
+#             break
+#     if b:
+#         print(a)
+
+
+# def F(n):
+#     if n >0:
+#         print(n, end='')
+#         F(n // 2)
+#         F(n - 4)
+#
+# F(9)
+
+
+# lst = []
+# with open('F:\Downloads\998.txt', 'r') as F:
+#     for _ in range(6000):
+#         s = F.readline()
+#         lst.append(s[:-1])
+#
+# counter = 0
+# my_max = -9999
+# for i, k in enumerate(lst):
+#     for z, j in enumerate(lst[i+1:]):
+#         k = int(k)
+#         j = int(j)
+#         if (k * j) % (k + j) == 0:
+#             if (k % 2 == 0) and (j % 2 == 0):
+#                 counter += 1
+#                 if (k * j) > my_max:
+#                     my_max = k * j
+# print(counter, my_max)
+
+
+# for k, x in enumerate(range(1000)):
+#     a = 0
+#     b = 10
+#     while x > 0:
+#         c = x % 10
+#         a += c
+#         if c < b:
+#             b = c
+#         x //= 10
+#     if a == 11 and b == 5:
+#         print(k)
+
+
+# import json
+#
+#
+# def greetings():
+#     try:
+#         with open('username.json') as f_obj:
+#             username = json.load(f_obj)
+#             print(f'Здравствуйте, {username}!')
+#     except FileNotFoundError:
+#         with open('username.json', 'w') as f_obj:
+#             username = input('Мы вас не знаем введите своё имя ')
+#             json.dump(username, f_obj)
+#             print(f'Вы вас запомнили, {username}')
+#
+#
+# greetings()
