@@ -22,4 +22,51 @@
 # - поле возраст НЕ является числом от 10 до 99: ValueError
 # Вызов метода обернуть в try-except.
 
-# TODO здесь ваш код
+class NotNameError(Exception):
+
+    def __init__(self, message='Поле имени содержит НЕ только буквы'):
+        self.message = message
+        super().__init__(self.message)
+
+
+class NotEmailError(Exception):
+
+    def __init__(self, message='поле емейл НЕ содержит @ и .(точку)'):
+        self.message = message
+        super().__init__(self.message)
+
+
+def verify_name(name):
+    for char in name:
+        if char.isalpha():
+            continue
+        else:
+            raise NotNameError()
+
+
+def verify_email(email):
+    if '@' in email and '.' in email:
+        pass
+    else:
+        raise NotEmailError()
+
+
+def verify_age(age):
+    if age > 99 or age < 10:
+        raise ValueError('Не соответсвует возраст')
+
+
+with open('registrations.txt', 'r', encoding='utf8') as file:
+    for line in file:
+        try:
+            name, email, age = line.split(' ')
+            age = int(age)
+            verify_name(name)
+            verify_email(email)
+            verify_age(age)
+        except (ValueError, NotNameError, NotEmailError) as exc:
+            with open('registrations_bad.log', 'a', encoding='utf8') as f_log:
+                f_log.write(f"{line.rstrip()} {exc} \n")
+        else:
+            with open('registrations_good.log', 'a', encoding='utf8') as f_log:
+                f_log.write(line)
