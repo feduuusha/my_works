@@ -1539,3 +1539,82 @@
 #
 #
 # greetings()
+
+
+# print('x y z')
+# for x in range(2):
+#     for y in range(2):
+#         for z in range(2):
+#             F = (x and y and not z) or (x and y and z) or (x and not y and not z)
+#             if F:
+#                 print(x, y, z)
+
+
+# n = 1
+# s = 0
+# while n <= 300:
+#     s = s + 30
+#     n = n * 3
+# print(s)
+
+
+# counter = 0
+# letters = 'ЗИМА'
+# for a in letters:
+#     for b in letters:
+#         for c in letters:
+#             for d in letters:
+#                 for f in letters:
+#                     word = a + b + c + d + f
+#                     if (word[0] == 'З' or word[0] == 'М') and (word[4] == 'А' or word[4] == 'И'):
+#                         counter += 1
+# print(counter)
+
+
+# a = '1' + 98 * '9'
+# while '19' in a or '299' in a or '3999' in a:
+#     a = a.replace('19', '2', 1)
+#     a = a.replace('299', '3', 1)
+#     a = a.replace('3999', '1', 1)
+# print(a)
+
+
+# def F(n):
+#     if n > 0:
+#         print(n, end='')
+#         F(n - 4)
+#         F(n // 2)
+#
+# F(9)
+
+
+lst_1 = []
+with open('F:\\Downloads\\962.txt', 'r') as file:
+    for line in file:
+        lst_1.append(line[:-1])
+
+
+# counter = 0
+# my_max = -999999
+# for i, k in enumerate(lst_1):
+#     for z, j in enumerate(lst_1[i+1:]):
+#         k = int(k)
+#         j = int(j)
+#         if (k + j) % 10 == 0:
+#             counter += 1
+#             if (k + j) > my_max:
+#                 my_max = (k + j)
+# print(counter, my_max)
+
+
+for x in range(1, 10000):
+    L = 0
+    M = 0
+    y = str(x)
+    while x > 0:
+        L += 1
+        if x % 2 == 0:
+            M = M + (x % 10) // 2
+        x = x // 10
+    if L == 3 and M == 7:
+        print(y)
