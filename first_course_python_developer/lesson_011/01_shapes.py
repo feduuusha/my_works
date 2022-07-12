@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import simple_draw as sd
+import turtle
 
 # На основе вашего кода из решения lesson_004/01_shapes.py сделать функцию-фабрику,
 # которая возвращает функции рисования треугольника, четырехугольника, пятиугольника и т.д.
@@ -14,12 +14,18 @@ import simple_draw as sd
 
 
 def get_polygon(n):
-    pass
-    # TODO здесь ваш код
+    def n_agon(point_x, point_y, angle=0, length=200):
+        pen = turtle.Turtle()
+        pen.up()
+        pen.setpos(point_x, point_y)
+        pen.left(angle)
+        pen.down()
+        for i in range(0, n):
+            pen.forward(length)
+            pen.left(360 / n)
+        pen.ht()
+    return n_agon
 
 
-draw_triangle = get_polygon(n=3)
-draw_triangle(point=sd.get_point(200, 200), angle=13, length=100)
-
-
-sd.pause()
+draw_triangle = get_polygon(n=10)
+draw_triangle(100, 100, 60, 200)
