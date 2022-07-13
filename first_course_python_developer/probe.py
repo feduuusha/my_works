@@ -1607,14 +1607,166 @@ with open('F:\\Downloads\\962.txt', 'r') as file:
 # print(counter, my_max)
 
 
-for x in range(1, 10000):
-    L = 0
-    M = 0
-    y = str(x)
-    while x > 0:
-        L += 1
-        if x % 2 == 0:
-            M = M + (x % 10) // 2
-        x = x // 10
-    if L == 3 and M == 7:
-        print(y)
+# for x in range(1, 10000):
+#     L = 0
+#     M = 0
+#     y = str(x)
+#     while x > 0:
+#         L += 1
+#         if x % 2 == 0:
+#             M = M + (x % 10) // 2
+#         x = x // 10
+#     if L == 3 and M == 7:
+#         print(y)
+
+
+# def reverse_string(s) -> None:
+#     """
+#     Do not return anything, modify s in-place instead.
+#     """
+#     for i in range(len(s)):
+#         s.insert(i, s.pop(-1))
+#
+#
+# s = ['y', 'i', 'e', 'l', 'd']
+# reverse_string(s)
+# print(s)
+
+
+# print('w x y z')
+# for w in range(2):
+#     for x in range(2):
+#         for y in range(2):
+#             for z in range(2):
+#                 F = (x and not y) or (x == z) or not w
+#                 if not F:
+#                     print(w, x, y, z)
+
+
+# s = 85 * '7'
+# while '333' in s or '777' in s:
+#     if '333' in s:
+#         s = s.replace('333', '7', 1)
+#     else:
+#         s = s.replace('777', '3', 1)
+# print(s)
+
+
+# print('x y z')
+# for x in range(2):
+#     for y in range(2):
+#         for z in range(2):
+#             F = (not z) and x
+#             if F:
+#                 print(x, y, z)
+
+
+# for x in range(10000):
+#     f = str(x)
+#     L = 0
+#     M = 0
+#     while x > 0:
+#         L = L + 1
+#         if x % 2 == 0:
+#             M = M + x % 10
+#         x = x // 10
+#     if L == 3 and M == 8:
+#         print(f)
+#         break
+
+
+# for x in range(10000, 1, -1):
+#     f = str(x)
+#     l = 0
+#     m = 1
+#     while x > 0:
+#         l += 1
+#         if x % 2 > 0:
+#             m *= x % 8
+#         x = x // 8
+#     if m == 25 and l == 3:
+#         print(f)
+#         break
+
+
+# for x in range(10000):
+#     f = str(x)
+#     a = 0
+#     b = 0
+#     while x > 0:
+#         if x % 2 == 0:
+#             a += 1
+#         else:
+#             b += x % 6
+#         x = x // 6
+#     if a == 2 and b == 4:
+#         print(f)
+#         break
+
+
+# print('x y z w')
+# for x in range(2):
+#     for y in range(2):
+#         for z in range(2):
+#             for w in range(2):
+#                 F = ((not w or not x) == (not z or y)) and (y or w)
+#                 if F:
+#                     print(x, y, z, w, bool(F))
+#                 else:
+#                     print(x, y, z, w, bool(F))
+
+
+# print('x y z')
+# for x in range(2):
+#     for y in range(2):
+#         for z in range(2):
+#             F = (not z) and x or x and y
+#             print(z, y, x, bool(F))
+
+
+# print('w x y z')
+# for w in range(2):
+#     for x in range(2):
+#         for y in range(2):
+#             for z in range(2):
+#                 F = (x and not y) or (x == z) or not w
+#                 if not F:
+#                     print(w, z, y, x)
+
+
+# s = 70 * '8'
+# while '2222' in s or '8888' in s:
+#     if '2222' in s:
+#         s = s.replace('2222', '88', 1)
+#     else:
+#         s = s.replace('8888', '22', 1)
+# print(s)
+
+
+# for x in range(101, 10000):
+#     f = str(x)
+#     L = x - 30
+#     M = x + 30
+#     while L != M:
+#         if L > M:
+#             L = L - M
+#         else:
+#             M = M - L
+#     if M == 30:
+#         print(f)
+#         break
+
+
+# for x in range(1, 10000):
+#     f = str(x)
+#     a = 0
+#     b = 0
+#     while x > 0:
+#         c = x % 10
+#         a += c
+#         if c > b:
+#             b = c
+#         x //= 10
+#     if a == 9 and b == 5:
+#         print(f)
+#         break
